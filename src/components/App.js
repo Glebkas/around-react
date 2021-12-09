@@ -16,6 +16,7 @@ function App() {
   const [isEditProfileOpen, setisEditProfileOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
+  const [isRemovePopupOpen, setIsRemovePopupOpen] = React.useState(false);
 
   function handleCardClick(card) {
     setSelectedCard(card);
@@ -33,12 +34,17 @@ function App() {
   function handleAddPlaceClick() {
     setisAddPlacePopupOpen(true);
   }
+  function handleRemoveClick(card) {
+    setSelectedCard(card);
+    setIsRemovePopupOpen(true);
+  }
 
   function closeAllPopups() {
     setisEditProfileOpen(false);
     setIsEditAvatarPopupOpen(false);
     setisAddPlacePopupOpen(false);
-    setIsImagePopupOpen(false); 
+    setIsImagePopupOpen(false);
+    setIsRemovePopupOpen(false);
   }
 
   return (
@@ -50,6 +56,7 @@ function App() {
           onEditProfileClick={handleEditProfileClick}
           onAddPlaceClick={handleAddPlaceClick}
           onCardClick={handleCardClick}
+          onRemoveClick={handleRemoveClick}
         />
 
         <Footer />
@@ -135,6 +142,14 @@ function App() {
           />
           <span id="profile-about-me-error" className="form__error"></span>
         </PopupWithForm>
+        <PopupWithForm
+          className="popup popup_type_edit-profile"
+          name="delete"
+          title="Are you Sure?"
+          buttonCaption="Yes"
+          isOpen={isRemovePopupOpen}
+          onClose={closeAllPopups}
+        ></PopupWithForm>
 
         <ImagePopup
           name="display-image"
@@ -148,21 +163,3 @@ function App() {
 }
 
 export default App;
-
-// <section className="popup popup_type_delete">
-//   <div className="popup__container">
-//     <button
-//       type="button"
-//       className="popup__close-button popup__close-button_type_delete"
-//     ></button>
-//     <form className="form form_type_delete">
-//       <h2 className="popup__title">Are you Sure?</h2>
-//       <button
-//         type="submit"
-//         className="form__submit form__submit_type_delete"
-//       >
-//         Yes
-//       </button>
-//     </form>
-//   </div>
-// </section>

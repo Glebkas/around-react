@@ -9,10 +9,14 @@ function Card(props) {
     props.onCardClick(props.card);
   }
 
+  function handleRemoveClick(){
+    props.onRemoveClick(props.card)
+  }
+
   return (
     <li className="cards__list-item">
       <div className="card">
-        <button className="card__remove-button" type="button"></button>
+        <button  onClick={handleRemoveClick} className="card__remove-button" type="button"></button>
         <img
           className="card__image"
           onClick={handleClick}

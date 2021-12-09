@@ -11,13 +11,10 @@ function Main(props) {
 
   React.useEffect(() => {
     api.getInitialProfile().then((data) => setUserName(data.name));
-  });
-  React.useEffect(() => {
     api.getInitialProfile().then((data) => setUserDescription(data.about));
-  });
-  React.useEffect(() => {
     api.getInitialProfile().then((data) => setUserAvatar(data.avatar));
   });
+
   React.useEffect(() => {
     api
       .getInitialCards()
@@ -71,6 +68,7 @@ function Main(props) {
               key={card["_id"]}
               card={card}
               onCardClick={props.onCardClick}
+              onRemoveClick={props.onRemoveClick}
             />
           ))}
         </div>
