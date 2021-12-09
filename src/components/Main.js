@@ -17,7 +17,6 @@ function Main(props) {
         setUserDescription(data.about);
         setUserAvatar(data.avatar);
       })
-
       .catch((err) => console.error(`error: ${err}`));
   }, []);
 
