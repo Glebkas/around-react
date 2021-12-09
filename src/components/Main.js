@@ -12,11 +12,12 @@ function Main(props) {
   React.useEffect(() => {
     api
       .getInitialProfile()
-      .then(
-        (data) => setUserName(data.name),
-        (data) => setUserDescription(data.about),
-        (data) => setUserAvatar(data.avatar)
-      )
+      .then((data) => {
+        setUserName(data.name);
+        setUserDescription(data.about);
+        setUserAvatar(data.avatar);
+      })
+
       .catch((err) => console.error(`error: ${err}`));
   }, []);
 
