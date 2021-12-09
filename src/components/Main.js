@@ -10,10 +10,15 @@ function Main(props) {
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
-    api.getInitialProfile().then((data) => setUserName(data.name));
-    api.getInitialProfile().then((data) => setUserDescription(data.about));
-    api.getInitialProfile().then((data) => setUserAvatar(data.avatar));
-  });
+    api
+      .getInitialProfile()
+      .then(
+        (data) => setUserName(data.name),
+        (data) => setUserDescription(data.about),
+        (data) => setUserAvatar(data.avatar)
+      )
+      .catch((err) => console.error(`error: ${err}`));
+  }, []);
 
   React.useEffect(() => {
     api
