@@ -1,31 +1,11 @@
 import React from "react";
-import api from "../utils/api";
+
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 import Card from "./Card";
 
 function Main(props) {
-  const [userName, setUserName] = React.useState("Jacques Cousteau");
-  const [userDescription, setUserDescription] = React.useState("Explorer");
-  const [userAvatar, setUserAvatar] = React.useState("");
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    api
-      .getInitialProfile()
-      .then((data) => {
-        setUserName(data.name);
-        setUserDescription(data.about);
-        setUserAvatar(data.avatar);
-      })
-      .catch((err) => console.error(`error: ${err}`));
-  }, []);
-
-  React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((data) => setCards(data))
-      .catch((err) => console.error(`error: ${err}`));
-  }, []);
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="main">
@@ -36,7 +16,7 @@ function Main(props) {
               id="profileImg"
               className="profile__img"
               alt="travaler profile"
-              src={userAvatar}
+              src={currentUser.avatar}
             />
             <button
               type="button"
@@ -46,14 +26,14 @@ function Main(props) {
           </div>
           <div className="profile__details">
             <div className="profile__details-top">
-              <h1 className="profile__name">{userName}</h1>
+              <h1 className="profile__name">{currentUser.name}</h1>
               <button
                 type="button"
                 className="profile__edit-button"
                 onClick={props.onEditProfileClick}
               ></button>
             </div>
-            <p className="profile__title">{userDescription}</p>
+            <p className="profile__title">{currentUser.about}</p>
           </div>
         </div>
 
@@ -68,12 +48,14 @@ function Main(props) {
       </section>
       <section className="cards">
         <div className="cards__list">
-          {cards.reverse().map((card) => (
+          {props.cards.reverse().map((card) => (
             <Card
               key={card["_id"]}
               card={card}
+              onCardLike={props.onCardLike}
               onCardClick={props.onCardClick}
               onRemoveClick={props.onRemoveClick}
+              onCardDelete={props.onCardDelete}
             />
           ))}
         </div>

@@ -11,6 +11,13 @@ class Api {
     return Promise.reject("Error");
   }
 
+  changeLikeCardStatus(cardId, isLiked) {
+    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
+      method: `${isLiked ? "PUT" : "DELETE"}`,
+      headers: this.headers,
+    }).then((res) => this._checkResponse(res));
+  }
+
   getInitialProfile() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
@@ -23,7 +30,7 @@ class Api {
     }).then((res) => this._checkResponse(res));
   }
 
-  changeProfileImg({ avatar }) {
+  changeProfileImg(avatar) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
@@ -49,20 +56,6 @@ class Api {
 
   deleteCard(cardId) {
     return fetch(`${this.baseUrl}/cards/${cardId}`, {
-      method: "DELETE",
-      headers: this.headers,
-    }).then((res) => this._checkResponse(res));
-  }
-
-  likeCard(cardId) {
-    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
-      method: "PUT",
-      headers: this.headers,
-    }).then((res) => this._checkResponse(res));
-  }
-
-  removeLike(cardId) {
-    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
     }).then((res) => this._checkResponse(res));

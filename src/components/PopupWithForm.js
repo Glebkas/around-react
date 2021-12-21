@@ -13,9 +13,13 @@ function PopupWithForm(props) {
         ></button>
         <h2 className="popup__title">{props.title}</h2>
         {props.children}
-        <form className={`form form_type_${props.name}`} name={props.name}>
+        <form
+          className={`form form_type_${props.name}`}
+          name={props.name}
+          onSubmit={props.onSubmit}
+        >
           <span id="image-url-error" className="form__error"></span>
-          <button type="submit" className="form__submit form__submit_disabled">
+          <button type="submit" className="form__submit">
             {props.buttonCaption}
           </button>
         </form>
