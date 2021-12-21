@@ -13,10 +13,7 @@ import api from "../utils/api";
 
 function App() {
   React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((initialCards) => setCards([...initialCards]))
-      .catch(console.log);
+    api.getInitialCards().then(setCards).catch(console.log);
     api.getInitialProfile().then(setCurrentUser).catch(console.log);
   }, []);
 

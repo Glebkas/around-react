@@ -13,6 +13,11 @@ function AddPlacePopup(props) {
     setLink(e.target.value);
   }
 
+  React.useEffect(() => {
+    setName("");
+    setLink("");
+  }, [props.isOpen]);
+
   function handleSubmit(e) {
     e.preventDefault();
 
