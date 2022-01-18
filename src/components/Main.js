@@ -44,9 +44,6 @@ function Main(props) {
         ></button>
       </section>
       <section className="cards">
-        <ul className="cards__list"></ul>
-      </section>
-      <section className="cards">
         <div className="cards__list">
           {props.cards.reverse().map((card) => (
             <Card
