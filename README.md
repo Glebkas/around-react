@@ -1,4 +1,4 @@
-# Around The U.S. landing page with popup
+# Around The U.S. Social Image Web App – React version
 
 ## Table of contents
 
@@ -21,19 +21,22 @@ Users should be able to:
 - View the optimal layout depending on their device's screen size
 - See hover states for interactive elements
 - Edit the profile name and title
+- Change profile image
 - Popup would open when the edit button clicked
 - Add new cards
+- Delete User Cards
 - Image preview will display when image clicked
-- Like button will change the heart state to black
+- Like button will change the heart state and count likes
+- All changes will be saved after refresh
 
 ### Screenshot
 
-![](./screenshot.png)
+![](./screenshot.jpg)
 
 ### Links
 
-- Github Repository: https://github.com/Glebkas/web_project_4
-- Live Site URL: https://glebkas.github.io/web_project_4/
+- Github Repository: https://github.com/Glebkas/around-react/
+- Live Site URL: https://glebkas.github.io/around-react/
 
 ## My process
 
@@ -43,9 +46,12 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - CSS Grid
+- BEM
+- JavaScript
 - React
 
 ### Continued development
+ 
 
 ## Author
 
